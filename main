@@ -1,0 +1,20 @@
+class txt_control:
+    def __init__(self,file_name):
+        self.file_name = file_name
+        self.txt_str = ''
+    def txt_read(self):
+        with open(self.file_name,'r') as m_filename:
+            self.txt_str = m_filename.read()
+        m_filename.close()
+    def txt_write(self,write_str):
+        with open(self.file_name,'w') as m_filename:
+            m_filename.write(write_str)
+        m_filename.close()
+    def txt_print(self):
+        with open(self.file_name,'r') as m_filename:
+            print(m_filename.read())
+        m_filename.close()
+    def txt_append(self,write_str):
+        with open(self.file_name,'a') as m_filename:
+            m_filename.write(write_str)
+        m_filename.close()
