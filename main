@@ -1,20 +1,27 @@
 class txt_control:
-    def __init__(self,file_name):
-        self.file_name = file_name
+    def __init__(self, txt_name):
+        self.txt_name = txt_name
         self.txt_str = ''
+        self.txt_list = []
     def txt_read(self):
-        with open(self.file_name,'r') as m_filename:
-            self.txt_str = m_filename.read()
-        m_filename.close()
-    def txt_write(self,write_str):
-        with open(self.file_name,'w') as m_filename:
-            m_filename.write(write_str)
-        m_filename.close()
-    def txt_print(self):
-        with open(self.file_name,'r') as m_filename:
-            print(m_filename.read())
-        m_filename.close()
+        with open(self.txt_name,'r') as local_txt:
+            self.txt_str = local_txt.read()
+        local_txt.close()
+    def txt_cover(self,write_str):
+        with open(self.txt_name,'w') as local_txt:
+            local_txt.write(write_str)
+        local_txt.close()
     def txt_append(self,write_str):
-        with open(self.file_name,'a') as m_filename:
-            m_filename.write(write_str)
-        m_filename.close()
+        with open(self.txt_name,'a') as local_txt:
+            local_txt.write(write_str)
+        local_txt.close()
+    def txt_clear(self):
+        with open(self.txt_name,'w') as local_txt:
+            local_txt.write('')
+        local_txt.close()
+    def txt_intolist(self,fengefu):
+        start = 0
+        for i in range(0,len(self.txt_str)):
+            if self.txt_str[i:i+len(fengefu)] == fengefu:
+                self.txt_list.append(float(self.txt_str[start:i]))
+                start = i+len(fengefu)
